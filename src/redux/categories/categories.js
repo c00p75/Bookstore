@@ -11,4 +11,6 @@ export const checkStatusReducer = (state = defaultState, action) => {
   }
 };
 
-export const status = () => ({ type: CHECK_STATUS });
+export const status = () => ({
+  type: CHECK_STATUS,
+});
