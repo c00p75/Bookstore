@@ -9,6 +9,7 @@ const BookForm = () => {
 
   const [author, setAuthor] = useState('');
   const [title, setTitle] = useState('');
+  const [category, setCategory] = useState('Action');
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -17,7 +18,7 @@ const BookForm = () => {
       item_id: uuidv4(),
       title,
       author,
-      category: 'Fiction',
+      category,
     }));
 
     setAuthor('');
@@ -45,7 +46,16 @@ const BookForm = () => {
           value={author}
           onChange={(e) => setAuthor(e.target.value)}
         />
-        <button type="submit" className="px-5">
+
+        <select id="categoryList" onChange={(e) => setCategory(e.target.value)}>
+          <option value="" disabled hidden>Category</option>
+          <option>Action</option>
+          <option>Science Fiction</option>
+          <option>Economy</option>
+          <option value=" ">N/A</option>
+        </select>
+
+        <button type="submit">
           ADD BOOK
         </button>
 

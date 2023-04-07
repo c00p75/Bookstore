@@ -1,11 +1,12 @@
-const Categories = () => (
-  <div className="categoryBtn d-flex justify-content-center align-items-center">
-    <button
-      type="button"
-    >
-      Check Status
-    </button>
-  </div>
-);
+import { useSelector } from 'react-redux';
+
+const Categories = () => {
+  const status = useSelector((state) => state.status);
+  return (
+    <div className="container py-4">
+      <h1 className="py-4">{status}</h1>
+    </div>
+  );
+};
 
 export default Categories;
