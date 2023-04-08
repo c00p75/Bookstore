@@ -1,11 +1,11 @@
 const CHECK_STATUS = 'bookstore/categories/CHECK_STATUS';
 
-const defaultState = [];
+const defaultState = 'Under construction';
 
 export const checkStatusReducer = (state = defaultState, action) => {
   switch (action.type) {
     case CHECK_STATUS:
-      return 'In progress..';
+      return 'Under construction';
     default:
       return state;
   }

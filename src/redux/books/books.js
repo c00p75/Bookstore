@@ -8,26 +8,7 @@ const FETCH_BOOKS = 'bookstore/books/FETCH_BOOKS';
 const ADD_BOOK = 'bookstore/books/ADD_BOOK';
 const REMOVE_BOOK = 'bookstore/books/REMOVE_BOOK';
 
-const initialState = [
-  {
-    item_id: 'item1',
-    title: 'The Great Gatsby',
-    author: 'John Smith',
-    category: 'Fiction',
-  },
-  {
-    item_id: 'item2',
-    title: 'Anna Karenina',
-    author: 'Leo Tolstoy',
-    category: 'Fiction',
-  },
-  {
-    item_id: 'item3',
-    title: 'The Selfish Gene',
-    author: 'Richard Dawkins',
-    category: 'Nonfiction',
-  },
-];
+const initialState = [];
 
 export const booksReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -37,7 +18,7 @@ export const booksReducer = (state = initialState, action) => {
       return [...state, action.payload];
 
     case `${REMOVE_BOOK}/fulfilled`:
-      return [...state.filter((book) => book.item_id.toString() !== action.payload.toString())];
+      return [...state.filter((book) => book.item_id !== action.payload)];
 
     default:
       return state;
@@ -62,21 +43,14 @@ export const fetchBooks = createAsyncThunk(
 // Reducer actions
 export const addBook = createAsyncThunk(
   ADD_BOOK, async (book) => {
-    await axios({
-      method: 'post',
-      url: `${baseURL}/books`,
-      data: book,
-    });
+    await axios.post(`${baseURL}/books`, book);
     return book;
   },
 );
 
 export const removeBooks = createAsyncThunk(
   REMOVE_BOOK, async (bookId) => {
-    await axios({
-      method: 'DELETE',
-      url: `${baseURL}/books/${bookId}`,
-    });
+    await axios.delete(`${baseURL}/books/${bookId}`);
     return bookId;
   },
 );
