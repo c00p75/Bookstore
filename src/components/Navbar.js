@@ -17,7 +17,7 @@ const links = [
 ];
 
 const Navbar = () => (
-  <nav id="navbar" className="container d-flex px-5 py-3 justify-content-between">
+  <nav id="navbar" className="container-fluid d-flex px-5 py-3 justify-content-between">
     <a className="logo d-flex align-self-center" href="/#">Bookstore CMS</a>
     <ul className="d-flex my-2 align-items-center">
       {links.map((link) => (

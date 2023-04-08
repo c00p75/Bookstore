@@ -18,7 +18,7 @@ export const booksReducer = (state = initialState, action) => {
       return [...state, action.payload];
 
     case `${REMOVE_BOOK}/fulfilled`:
-      return [...state.filter((book) => book.item_id.toString() !== action.payload.toString())];
+      return [...state.filter((book) => book.item_id !== action.payload)];
 
     default:
       return state;
